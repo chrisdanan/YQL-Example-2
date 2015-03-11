@@ -7,11 +7,10 @@
 var main = function(){
 	//console.log("Hello Vane!");
 
-	var foodName;
+	var foodName; //Holds the value of the input textbox.
 
-	//Click the submit button.
-	$("#submitFoodName").on("click", function(event){
-		foodName =$("#foodName").val();
+	var getRestaurants = function(){
+		foodName = $("#foodName").val();
 
 		$.ajax({
 			//URL for the API
@@ -67,7 +66,13 @@ var main = function(){
 				}
 			}
 		});
-	})
+	}//End of getRestaurants function.
+
+	//Click the submit button.
+	$("#submitFoodName").on("click", function(event){
+		$("#foodResults").empty();
+		getRestaurants();
+	});
 };
 
 $(document).ready(main);
