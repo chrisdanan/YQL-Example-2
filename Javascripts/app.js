@@ -73,7 +73,7 @@ var main = function(){
 					//Wrap results in a div for sytling purposes.
 					$("#storeResults").append("<div class='storeResult'>");
 					if(stores[i] !== null){
-						$("#storeResults .storeResult:nth-child(" + count + ")").append($("<p>").text(stores[i]));
+						$("#storeResults .storeResult:nth-child(" + count + ")").append($("<a href='" + stores[i] + "'>" + stores[i] + "</a>"));
 					} else{
 						$("#storeResults .storeResult:nth-child(" + count + ")").append($("<p>").text("No URL available"));
 					}
