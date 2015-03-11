@@ -7,10 +7,16 @@
 var main = function(){
 	//console.log("Hello Vane!");
 
-	var storeName; //Holds the value of the input textbox.
+	var storeName; //Holds the type of store to search for.
+	var storeLocation; //Holds the area to search in.
 
 	var getStores = function(){
-		storeName = $("#storeName").val()
+		storeName = $("#storeName").val();
+		storeLocation = $("#storeLocation").val();
+
+		console.log(storeName);
+		console.log(storeLocation);
+
 		count = 0;
 
 		$.ajax({
@@ -25,7 +31,7 @@ var main = function(){
 
 			//Send in the query and that we want the results in JSON.
 			data:{
-				q: "select * from local.search where query = '" + storeName + "' and location = 'fullerton, ca'",
+				q: "select * from local.search where query = '" + storeName + "' and location = '" + storeLocation + ", ca'",
 				format: "json"
 			},
 
@@ -46,7 +52,7 @@ var main = function(){
 				});
 
 				//Append the header for the results.
-				$("#storeResults").append($("<h2>stores found in Fullerton</h2>"));
+				$("#storeResults").append($("<h2>stores found in " + storeLocation + "</h2>"));
 				
 				/*
 				stores.forEach(function(element){
