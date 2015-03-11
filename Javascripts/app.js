@@ -7,10 +7,10 @@
 var main = function(){
 	//console.log("Hello Vane!");
 
-	var foodName; //Holds the value of the input textbox.
+	var storeName; //Holds the value of the input textbox.
 
-	var getRestaurants = function(){
-		foodName = $("#foodName").val();
+	var getStores = function(){
+		storeName = $("#storeName").val();
 
 		$.ajax({
 			//URL for the API
@@ -24,7 +24,7 @@ var main = function(){
 
 			//Send in the query and that we want the results in JSON.
 			data:{
-				q: "select * from local.search where query = '" + foodName + "' and location = 'fullerton, ca'",
+				q: "select * from local.search where query = '" + storeName + "' and location = 'fullerton, ca'",
 				format: "json"
 			},
 
@@ -35,43 +35,43 @@ var main = function(){
 				var yqlresults = response.query.results.Result;  //Get the exact portion of the JSON response that we want.
 				console.log(yqlresults);
 
-				var restaurants = [];  //Holds the list of restaurants that the query brings up.
-				var addresses = [];  //Holds the addresses of the restaurants.
+				var stores = [];  //Holds the list of stores that the query brings up.
+				var addresses = [];  //Holds the addresses of the stores.
 
 				//Push the results into the arrays.
 				yqlresults.forEach(function(element){
-					restaurants.push(element.BusinessUrl);
+					stores.push(element.BusinessUrl);
 					addresses.push(element.Address);
 				});
 
 				//Append the header for the results.
-				$("#foodResults").append($("<h2>Restaurants found in Fullerton</h2>"));
+				$("#storeResults").append($("<h2>stores found in Fullerton</h2>"));
 				
 				/*
-				restaurants.forEach(function(element){
+				stores.forEach(function(element){
 					if(element !== null){
-						$("#foodResults").append($("<p>").text(element));
+						$("#storeResults").append($("<p>").text(element));
 					}
 				});
 				*/
 
 				//Put the results on the html page.
 				for(var i = 0; i < yqlresults.length; i++){
-					if(restaurants[i] !== null && addresses[i] !== null){
+					if(stores[i] !== null && addresses[i] !== null){
 						//Wrap results in a div for sytling purposes.
-						$("#foodResults").append("<div class='restaurantResult'>");
-						$("#foodResults .restaurantResult:nth-child(" + i + ")").append($("<p>").text(restaurants[i]));
-						$("#foodResults .restaurantResult:nth-child(" + i + ")").append($("<p>").text(addresses[i]));
+						$("#storeResults").append("<div class='storeResult'>");
+						$("#storeResults .storeResult:nth-child(" + i + ")").append($("<p>").text(stores[i]));
+						$("#storeResults .storeResult:nth-child(" + i + ")").append($("<p>").text(addresses[i]));
 					}
 				}
 			}
 		});
-	}//End of getRestaurants function.
+	}//End of getStores function.
 
 	//Click the submit button.
-	$("#submitFoodName").on("click", function(event){
-		$("#foodResults").empty();
-		getRestaurants();
+	$("#submitStoreName").on("click", function(event){
+		$("#storeResults").empty();
+		getStores();
 	});
 };
 
