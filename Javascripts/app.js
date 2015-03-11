@@ -17,7 +17,7 @@ var main = function(){
 		console.log(storeName);
 		console.log(storeLocation);
 
-		count = 0;
+		count = 1;
 
 		$.ajax({
 			//URL for the API
@@ -65,16 +65,24 @@ var main = function(){
 				console.log("*************************");
 				//Put the results on the html page.
 				for(var i = 0; i < yqlresults.length; i++){
-					if(stores[i] !== null && addresses[i] !== null){
-						count++;
-						console.log("Count: " + count);
-						console.log("i: " + i);
-						console.log("Store: " + stores[i] + "; Address: " + addresses[i]);
-						//Wrap results in a div for sytling purposes.
-						$("#storeResults").append("<div class='storeResult'>");
+					//if(stores[i] !== null && addresses[i] !== null){
+					count++;
+					console.log("Count: " + count);
+					console.log("i: " + i);
+					console.log("Store: " + stores[i] + "; Address: " + addresses[i]);
+					//Wrap results in a div for sytling purposes.
+					$("#storeResults").append("<div class='storeResult'>");
+					if(stores[i] !== null){
 						$("#storeResults .storeResult:nth-child(" + count + ")").append($("<p>").text(stores[i]));
-						$("#storeResults .storeResult:nth-child(" + count + ")").append($("<p>").text(addresses[i]));
+					} else{
+						$("#storeResults .storeResult:nth-child(" + count + ")").append($("<p>").text("No URL available"));
 					}
+					if(addresses[i] !== null){
+						$("#storeResults .storeResult:nth-child(" + count + ")").append($("<p>").text(addresses[i]));
+					} else{
+						$("#storeResults .storeResult:nth-child(" + count + ")").append($("<p>").text("No address available"));
+					}
+					//}
 				}
 				console.log("*************************");
 			}
