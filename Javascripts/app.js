@@ -10,7 +10,8 @@ var main = function(){
 	var storeName; //Holds the value of the input textbox.
 
 	var getStores = function(){
-		storeName = $("#storeName").val();
+		storeName = $("#storeName").val()
+		count = 0;
 
 		$.ajax({
 			//URL for the API
@@ -55,15 +56,21 @@ var main = function(){
 				});
 				*/
 
+				console.log("*************************");
 				//Put the results on the html page.
 				for(var i = 0; i < yqlresults.length; i++){
 					if(stores[i] !== null && addresses[i] !== null){
+						count++;
+						console.log("Count: " + count);
+						console.log("i: " + i);
+						console.log("Store: " + stores[i] + "; Address: " + addresses[i]);
 						//Wrap results in a div for sytling purposes.
 						$("#storeResults").append("<div class='storeResult'>");
-						$("#storeResults .storeResult:nth-child(" + i + ")").append($("<p>").text(stores[i]));
-						$("#storeResults .storeResult:nth-child(" + i + ")").append($("<p>").text(addresses[i]));
+						$("#storeResults .storeResult:nth-child(" + count + ")").append($("<p>").text(stores[i]));
+						$("#storeResults .storeResult:nth-child(" + count + ")").append($("<p>").text(addresses[i]));
 					}
 				}
+				console.log("*************************");
 			}
 		});
 	}//End of getStores function.
