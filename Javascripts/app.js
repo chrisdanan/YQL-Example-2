@@ -1,4 +1,11 @@
 /*
+ *Names:
+  Christopher Dancarlo Danan
+  Akhil Angad Choudhari
+ *Created: March 10, 2015
+ *Modified: March 11, 2015
+ *Purpose: User enters a type of store (e.g. pizza, burgers, video games) and a location in California (e.g. Brea, Fullerton, San Francisco)
+ 			and the app returns the top 10 stores associated with what the user entered.
  *References:
  * https://developer.yahoo.com/yql/console/#h=select+*+from+local.search+where+query%3D%22sushi%22+and+location%3D%22san+francisco%2C+ca%22
  *http://learn.jquery.com/ajax/working-with-jsonp/
@@ -17,7 +24,7 @@ var main = function(){
 		console.log(storeName);
 		console.log(storeLocation);
 
-		count = 1;
+	var	count = 1;  //Attach results to the correct div. This targets the correct "nth-child()" number.
 
 		$.ajax({
 			//URL for the API
