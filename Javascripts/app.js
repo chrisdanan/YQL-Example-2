@@ -69,6 +69,7 @@ var main = function(){
 				});
 				*/
 
+				
 				console.log("*************************");
 				//Put the results on the html page.
 				for(var i = 0; i < yqlresults.length; i++){
@@ -100,6 +101,22 @@ var main = function(){
 	$("#submitStoreName").on("click", function(event){
 		$("#storeResults").empty();
 		getStores();
+	});
+
+	//Press enter while user is on store name text box.
+	$("#storeName").on("keypress", function(event){
+		if(event.keyCode === 13){
+			$("#storeResults").empty();
+			getStores();
+		}
+	});
+
+	//Press enter while user is on store location text box.
+	$("#storeLocation").on("keypress", function(event){
+		if(event.keyCode === 13){
+			$("#storeResults").empty();
+			getStores();
+		}
 	});
 };
 
