@@ -7,11 +7,15 @@
  *Purpose: User enters a type of store (e.g. pizza, burgers, video games) and a location in California (e.g. Brea, Fullerton, San Francisco)
  			and the app returns the top 10 stores associated with what the user entered.
  *References:
- * https://developer.yahoo.com/yql/console/#h=select+*+from+local.search+where+query%3D%22sushi%22+and+location%3D%22san+francisco%2C+ca%22
- *http://learn.jquery.com/ajax/working-with-jsonp/
+  https://developer.yahoo.com/yql/console/#h=select+*+from+local.search+where+query%3D%22sushi%22+and+location%3D%22san+francisco%2C+ca%22
+  http://learn.jquery.com/ajax/working-with-jsonp/
 */
 
+// Client-side code
+/* jshint browser: true, jquery: true, curly: true, eqeqeq: true, forin: true, immed: true, indent: 4, latedef: true, newcap: true, nonew: true, quotmark: double, strict: true, undef: true, unused: true */
+
 var main = function(){
+	"use strict";
 	//console.log("Hello Vane!");
 
 	var storeName; //Holds the type of store to search for.
@@ -95,10 +99,10 @@ var main = function(){
 				console.log("*************************");
 			}
 		});
-	}//End of getStores function.
+	};//End of getStores function.
 
 	//Click the submit button.
-	$("#submitStoreName").on("click", function(event){
+	$("#submitStoreName").on("click", function(){
 		$("#storeResults").empty();
 		getStores();
 	});
